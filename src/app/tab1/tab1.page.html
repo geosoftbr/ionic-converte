@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Converte
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+    <ion-card >
+      
+      <ion-card-header>
+        <ion-card-subtitle>MOEDA</ion-card-subtitle>
+        <ion-card-title>{{ name }}</ion-card-title>
+      </ion-card-header>  
+      <ion-card-content>
+          <p>
+          <ion-card-subtitle>ÚLTIMA COTAÇÃO</ion-card-subtitle>
+          <ion-card-title>R$ {{ ask }}</ion-card-title>
+          <br><br>
+          <ion-card-subtitle>Atualizado em: {{ create_date }}</ion-card-subtitle>
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+</ion-content>
