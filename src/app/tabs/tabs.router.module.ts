@@ -35,6 +35,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'config',
+        children: [
+          {
+            path: '',
+            loadChildren: '../config/config.module#ConfigPageModule'
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
