@@ -23,5 +23,6 @@ import{ DolarTurismoService } from './dolar-turismo.service';
     DolarTurismoService,
   ],
   bootstrap: [AppComponent]
+
 })
 export class AppModule {}

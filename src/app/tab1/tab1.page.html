@@ -7,12 +7,12 @@
 </ion-header>
 
 <ion-content >
-    <ion-card >
-      
+    
+<!--   
+    <ion-card >    
       <ion-card-header>
-        <ion-card-subtitle>MOEDA</ion-card-subtitle>
-        <ion-card-title>{{ name }}</ion-card-title>
-      </ion-card-header>  
+        <ion-card-subtitle>Cotação {{ name }}</ion-card-subtitle>
+      </ion-card-header>
       <ion-card-content>
           <p>
           <ion-card-subtitle>ÚLTIMA COTAÇÃO</ion-card-subtitle>
@@ -22,5 +22,15 @@
         </p>
       </ion-card-content>
     </ion-card>
+-->
+    <ion-item>
+      <ion-label>Cotação {{ name }}</ion-label>
+      <ion-badge color="success" slot="end">R$ {{ ask }}</ion-badge>
+    </ion-item>
 
+<script>
+  var setaCor = {
+    
+  }
+</script>
 </ion-content>

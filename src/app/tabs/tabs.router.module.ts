@@ -34,6 +34,7 @@ const routes: Routes = [
           }
         ]
       },
+      /*
       {
         path: 'config',
         children: [
@@ -43,6 +44,7 @@ const routes: Routes = [
           }
         ]
       },
+      */
       {
         path: '',
         redirectTo: '/tabs/tab1',
