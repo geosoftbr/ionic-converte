@@ -25,12 +25,13 @@
 -->
     <ion-item>
       <ion-label>Cotação {{ name }}</ion-label>
-      <ion-badge color="success" slot="end">R$ {{ ask }}</ion-badge>
+      <ion-badge color="{{ color }}" slot="end">R$ {{ ask }}</ion-badge>
     </ion-item>
-
-<script>
-  var setaCor = {
-    
-  }
-</script>
+    <ion-card>
+        <ion-card-header>
+          <ion-card-title>Real</ion-card-title>
+          <ion-card-subtitle>Digite o Valor em Dolar</ion-card-subtitle>
+        </ion-card-header>
+        <ion-input type="number" size=40 value=0.00 style="font-size: 30px; padding-left: 20px;"></ion-input>
+      </ion-card>
 </ion-content>

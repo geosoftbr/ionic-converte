@@ -11,6 +11,7 @@ ask:number;
 create_date:string;
 varBid:number;
 name:string;
+color:string;
 
   constructor(public dolarTurismo: DolarTurismoService) {}
   ngOnInit() {
@@ -32,7 +33,14 @@ name:string;
         this.varBid = jsonArray.varBid;
         this.name = jsonArray.name;
 
-        //console.log('Moeda: '+ this.name +' Valor: '+ this.ask +' Cotação Atualizada pelo BC em: '+this.create_date);
+        var d = this.varBid;
+        if (d > 0){
+          this.color = "danger"
+        } 
+        else{
+          this.color = "success";
+        }
+        console.log('Cor Selecionada '+ this.color);
       }
   }
  
