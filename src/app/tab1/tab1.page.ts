@@ -40,7 +40,8 @@ color:string;
         else{
           this.color = "success";
         }
-        console.log('Cor Selecionada '+ this.color);
+        console.log('[tab1.page.ts - parseJson] Cor Selecionada '+ this.color);
+        console.log('[tab1.page.ts - parseJson] Ultima atualização '+ this.create_date);
       }
   }
  
