@@ -16,5 +16,11 @@ export class DolarTurismoService {
      //conexão local: 'assets/data/dolar.json'
       return this.http.get('http://economia.awesomeapi.com.br/USD-BRLT/1?format=json');
     };
+    convertValue(valIn:number, dolIn:number){
+      //pega o valor de valIn e faz o calculo da conversão e converte usando o valor do dolar que vem pela variavel dolIn
+      var valOut: number,
+      valOut = valIn * dolIn;
+      return valOut;
+    }
 
 }
