@@ -13,8 +13,8 @@
     --ion-background-color-rgb: var(--ion-color-dark-rgb);
     --ion-text-color: var(--ion-color-light);
     --ion-text-color-rgb: var(--ion-color-light-rgb);
-
-    --ion-color-step-50: #232323;
+  
+    --ion-color-step-50: #121212;
     --ion-color-step-100: #2e2e2e;
     --ion-color-step-150: #3a3a3a;
     --ion-color-step-200: #454545;
@@ -39,9 +39,14 @@
     --ion-color-light-grey-contrast: #000000;
     --ion-color-light-grey-contrast-rgb: 0,0,0;
     --ion-color-light-grey-shade: #a9a9a9;
-    --ion-color-light-grey-tint: #c6c6c6;
+    --ion-color-light-grey-tint: #c6c6c6; 
+  
+    .box{
+      border:0.5px solid darkgrey;
+      box-shadow: black;
 
-    
+    }
+
   }
   
   .ion-color-light-grey {
@@ -56,5 +61,7 @@
   .native-input.sc-ion-input-ios {
     padding-left: 10px;
   }
+
+
 
 //}
