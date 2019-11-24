@@ -40,10 +40,16 @@
     --ion-color-light-grey-contrast-rgb: 0,0,0;
     --ion-color-light-grey-shade: #a9a9a9;
     --ion-color-light-grey-tint: #c6c6c6; 
+
+  
   
     .box{
-      border:0.5px solid darkgrey;
-      box-shadow: black;
+      border-bottom:0.5px solid darkgrey;
+      border-radius:10px;
+      border-spacing: 10px;
+      box-shadow: offset-x 2px 2px 2px 1px lightsalmon;
+      outline-offset: 0.5rem;
+    
 
     }
 
