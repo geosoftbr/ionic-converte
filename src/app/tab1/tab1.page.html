@@ -28,16 +28,25 @@
         <ion-label><b>{{ name }}</b> <h4>{{ create_date }}</h4></ion-label>
         <ion-badge color="{{ color }}" slot="end">R$ {{ ask }}</ion-badge>
     </ion-item>
+
     <ion-card>
         <ion-card-header>
           <ion-card-title>Converter para Real</ion-card-title>
           <ion-card-subtitle>Digite o Valor em Dolar</ion-card-subtitle>
         </ion-card-header>
+        <ion-item>
+          <ion-label>Forma de pagamento</ion-label>
+          <ion-select value="types" interface="action-sheet" placeholder="Selecione!">
+            <ion-select-option value="1" >Dinheiro</ion-select-option>
+            <ion-select-option value="2">Cartão</ion-select-option>
+            <ion-select-option value="3">Entrega no Brasil</ion-select-option>
+          </ion-select>
+        </ion-item>
         <ion-input class="box" type="number" id="valUs" size=40 value=1.0 style="text-align: left; font-size: 40px; "></ion-input>
         <ion-input class="box" value="0.00" readonly id="valBr" size=40 style="text-align: left; font-size: 40px; "></ion-input>
-        <ion-label><h4>Imposto pago em {{  }}</h4></ion-label>
+        <ion-label><h4>Imposto pago em </h4></ion-label>
       </ion-card>
       <div class="ion-padding">
-        <ion-button expand="block" color="success" type="submit" class="ion-no-margin" (click)="convertValue('1',1, this.ask)'" >Converte</ion-button>
+        <ion-button expand="block" color="success" type="submit" class="ion-no-margin" >Converte</ion-button>
       </div>
 </ion-content>
