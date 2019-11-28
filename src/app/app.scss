@@ -40,7 +40,8 @@
     --ion-color-light-grey-contrast-rgb: 0,0,0;
     --ion-color-light-grey-shade: #a9a9a9;
     --ion-color-light-grey-tint: #c6c6c6; 
-
+  
+    --color-selected: var(--ion-tab-bar-color-activated, var( --ion-color-success, #10dc60));
   
   
     .box{
@@ -51,6 +52,27 @@
       outline-offset: 0.5rem;
     
 
+    }
+
+    .tabbar {
+      a.tab-button[aria-selected=true]:nth-of-type(1) {
+        color: green;
+        .tab-button-icon {
+          color: green;
+        }
+      }
+      a.tab-button[aria-selected=true]:nth-of-type(2) {
+        color: purple;
+        .tab-button-icon {
+          color: purple;
+        }
+      }
+      a.tab-button[aria-selected=true]:nth-of-type(3) {
+        color: red;
+        .tab-button-icon {
+          color: red;
+        }
+      }
     }
 
   }

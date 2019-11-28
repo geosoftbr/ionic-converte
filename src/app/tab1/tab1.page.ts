@@ -46,7 +46,7 @@ color:string;
         console.log('[tab1.page.ts - parseJson] Cotação - ' + this.ask);
       }
      //console.log ("Preparando para converter por "+ this.ask);
-      //this.dolarTurismo.convertValue("1",1, this.ask);
+     //this.dolarTurismo.convertValue("1",1, this.ask);
   }
  
 }
