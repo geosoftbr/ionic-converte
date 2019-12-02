@@ -20,7 +20,7 @@ export class DolarTurismoService {
     };
     convertValue(transType:string, valIn:number, dolIn:any){
       //pega o valor de valIn e faz o calculo da conversão e converte usando o valor do dolar que vem pela variavel dolIn
-      console.log(" entrei na funcao para converter os valores! ")
+      console.log("[dolar-turismo-service.ts] entrei na funcao para converter os valores! ")
       var valOut: any;
       var dolInNum: number;
       var valDirect: number;

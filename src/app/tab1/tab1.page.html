@@ -36,15 +36,15 @@
         </ion-card-header>
         <ion-item>
           <ion-label>Forma de pagamento</ion-label>
-          <ion-select id="types "value="tp" interface="action-sheet"placeholder="Selecione" >
-            <ion-select-option value="1" selected>Dinheiro</ion-select-option>
+          <ion-select id="types" interface="action-sheet" placeholder="Selecione" (change)="onChange($event)">
+            <ion-select-option value="1" selected="selected">Dinheiro</ion-select-option>
             <ion-select-option value="2" >Cartão</ion-select-option>
             <ion-select-option value="3" >Entrega no Brasil</ion-select-option>
           </ion-select>
         </ion-item>
-        <ion-input class="box" type="number" id="valUs" size=40 value=1.0 style="text-align: left; font-size: 40px; "></ion-input>
+        <ion-input class="box" type="number" id="valUs" size=40 value=1.0 style="text-align: left; font-size: 40px;"></ion-input>
         <ion-input class="box" value="0.00" readonly id="valBr" size=40 style="text-align: left; font-size: 40px; "></ion-input>
-        <ion-label id="valImposto"><small>Valor do imposto pago:  </small></ion-label>
+        <ion-label id="valImposto"><small>Valor do imposto pago: </small></ion-label>
       </ion-card>
       <div class="ion-padding">
         <ion-button expand="block" color="success" type="submit" class="ion-no-margin" >Converte</ion-button>

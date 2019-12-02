@@ -6,24 +6,39 @@ import { DolarTurismoService } from '../dolar-turismo.service';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
+
 export class Tab1Page {
 ask:number;
 create_date:string;
 varBid:number;
 name:string;
 color:string;
+tipoTran:string;
+valEntrada:number;
+valDol: any;
 
   constructor(public dolarTurismo: DolarTurismoService) {}
   ngOnInit() {
     this.dolarTurismo.getRemoteData().subscribe(
       data=>{
-        //console.log(data);
         this.parseJson(data);
+        
+        this.valDol = (<HTMLScriptElement[]><any>document.getElementsByName("valUs"))[0]; //pega valor do campo
+
+        console.log("[tab1.page.ts - ngOnInit] - Iniciando Conversão")
+        console.log("[tab1.page.ts - ngOnInit] - Tipo da Transação "+ this.tipoTran)
+        console.log("[tab1.page.ts - ngOnInit] - Valor de Entrada "+ this.valDol)
+        console.log ("[tab1.page.ts - ngOnInit] - Preparando para converter por "+ this.ask)
+        this.valEntrada = parseFloat(this.valDol);
+        this.dolarTurismo.convertValue(this.tipoTran,this.valEntrada, this.ask );
+
       }, error =>{
         console.log(error);
       }
     );
+
   }
+  
   parseJson(data: Object) {
     {
         let jsonArray = data[0];
@@ -41,12 +56,15 @@ color:string;
           this.color = "success";
         }
 
+
         console.log('[tab1.page.ts - parseJson] Cor Selecionada => '+ this.color);
         console.log('[tab1.page.ts - parseJson] Ultima atualização '+ this.create_date);
         console.log('[tab1.page.ts - parseJson] Cotação - ' + this.ask);
       }
-     //console.log ("Preparando para converter por "+ this.ask);
-     //this.dolarTurismo.convertValue("1",1, this.ask);
+
   }
- 
+  onChange($event){
+    let txt = $event.target.options[$event.target.options.selectedIndex].text;
+    console.log( "Selecionado: "+ txt)
+  }
 }
