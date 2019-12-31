@@ -22,8 +22,24 @@ valDol: any;
     this.dolarTurismo.getRemoteData().subscribe(
       data=>{
         this.parseJson(data);
+
+
+        var e = (document.getElementById("types")) as HTMLSelectElement;
+        var sel = e.selectedIndex;
+        var opt = e.options[sel]
+        //console.log(opt.toString);
+        //var sel = e.selectedOptions;
+        //var opt = e.options[sel];
+        var tTran = (<HTMLOptionElement>opt).value;
+
+        let vDol: HTMLElement = document.getElementById('valUs');
+
+        console.log("valor campo dolar: "+ vDol.innerHTML);
+        console.log("Tipo da transacao "+ sel.toString)
         
-        this.valDol = (<HTMLScriptElement[]><any>document.getElementsByName("valUs"))[0]; //pega valor do campo
+
+        //this.valDol =  el //pega valor do campo
+        
 
         console.log("[tab1.page.ts - ngOnInit] - Iniciando Conversão")
         console.log("[tab1.page.ts - ngOnInit] - Tipo da Transação "+ this.tipoTran)
@@ -56,7 +72,6 @@ valDol: any;
           this.color = "success";
         }
 
-
         console.log('[tab1.page.ts - parseJson] Cor Selecionada => '+ this.color);
         console.log('[tab1.page.ts - parseJson] Ultima atualização '+ this.create_date);
         console.log('[tab1.page.ts - parseJson] Cotação - ' + this.ask);
@@ -64,7 +79,25 @@ valDol: any;
 
   }
   onChange($event){
-    let txt = $event.target.options[$event.target.options.selectedIndex].text;
-    console.log( "Selecionado: "+ txt)
+    let txt = $event.target.value
+    this.dolarTurismo.getRemoteData().subscribe(
+      data=>{
+        this.parseJson(data);
+
+        this.tipoTran = txt;
+        this.valDol = (<HTMLScriptElement[]><any>document.getElementById("valUs"))[0]; //pega valor do campo
+
+        console.log("[tab1.page.ts - onChange] - Iniciando Conversão")
+        console.log("[tab1.page.ts - onChange] - Tipo da Transação "+ this.tipoTran)
+        console.log("[tab1.page.ts - onChange] - Valor de Entrada "+ this.valDol)
+        console.log ("[tab1.page.ts - onChange] - Preparando para converter por "+ this.ask)
+        this.valEntrada = parseFloat(this.valDol);
+        this.dolarTurismo.convertValue(this.tipoTran,this.valEntrada, this.ask );
+
+      }, error =>{
+        console.log(error);
+      }
+    );
+    
   }
 }
