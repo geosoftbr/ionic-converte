@@ -126,11 +126,15 @@ txMoney = 0.011; // 1,1%
       
         //pega valor digitado em Dolar
         //let vDol: HTMLElement = document.getElementById('valUs');
-
-        this.valDol = this.valUs;
+        if(this.valUs==null){
+          this.valDol = 0;
+        }else{
+          this.valDol = this.valUs;
+        }
 
         console.log("[tab1.page.ts - onChange] - Iniciando Conversão")
         console.log("[tab1.page.ts - onChange] - Tipo da Transação "+ this.tipoTran)
+        
         console.log("[tab1.page.ts - onChange] - Valor de Entrada "+ this.valDol)
         console.log ("[tab1.page.ts - onChange] - Preparando para converter por "+ this.ask)
 

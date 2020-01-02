@@ -37,12 +37,12 @@
 
         <ion-item>
           <ion-label>Forma de pagamento</ion-label>
-          <ion-select [(ngModel)]="trType" name="trType" id="trType" multiple="false" interface="action-sheet" placeholder="Selecione" (ionChange)="onChange()">
+          <ion-select [(ngModel)]="trType" name="trType" id="trType" multiple="false" interface="action-sheet" placeholder="Selecione">
             <ion-select-option [value]="item" *ngFor="let item of tipos">{{item.nome}}</ion-select-option>
           </ion-select>
         </ion-item>
 
-        <ion-input class="box" [(ngModel)]="valUs" type="number" id="valUs" size=40 style="text-align: left; font-size: 40px;"></ion-input>
+        <ion-input class="box" [(ngModel)]="valUs" type="number" id="valUs" size=40 style="text-align: left; font-size: 40px;" (ionChange)="onChange()"></ion-input>
         <ion-input class="box" [(ngModel)]="valBr" readonly id="valBr" size=40 style="text-align: left; font-size: 40px; "></ion-input>
         <ion-label id="valImposto"><small>Valor do imposto pago: R$ {{ taxas }}</small></ion-label>
 

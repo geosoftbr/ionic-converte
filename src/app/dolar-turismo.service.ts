@@ -35,7 +35,7 @@ export class DolarTurismoService {
       
       valTaxMoney = 0.011; // 1,1%
       valTaxCredit = 0.0638; // 6,38%
-      valTaxDelivery = 0.6; // 60%
+      valTaxDelivery = 0.6; // até 60%
       
       dolInNum = parseFloat(dolIn);
 
