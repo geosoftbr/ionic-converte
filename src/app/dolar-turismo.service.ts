@@ -18,6 +18,7 @@ export class DolarTurismoService {
       return this.http.get('http://economia.awesomeapi.com.br/USD-BRLT/1?format=json');
       //return this.http.get('assets/data/dolar.json'); //Local
     };
+
     convertValue(transType:string, valIn:number, dolIn:any){
       //pega o valor de valIn e faz o calculo da conversão e converte usando o valor do dolar que vem pela variavel dolIn
       console.log("[dolar-turismo-service.ts] entrei na funcao para converter os valores! ")
@@ -38,24 +39,40 @@ export class DolarTurismoService {
       
       dolInNum = parseFloat(dolIn);
 
-      if (transType=="1"){
+      if (transType=="Dinheiro"){
         taxes = valTaxMoney;
         txtPay = "Dinheiro";
-      }else if (transType=="2"){
+      }else if (transType=="Cartão"){
         taxes = valTaxCredit;
         txtPay = "Cartão de Crédito";
-      }else if(transType=="3"){
+      }else if(transType=="Entrega no Brasil"){
         taxes = valTaxDelivery;
         txtPay = "Entrega";
+      } else if (transType==null){ //default = dinheiro
+        taxes = valTaxMoney;
+        txtPay = "Dinheiro";        
       }
-      console.log('[dolar-turismo-service.ts] Transação selecionada: '+txtPay);
+      
+      console.log('[dolar-turismo-service.ts] Transação selecionada: '+txtPay); 
+      //default = dinheiro (1)
+
       valDirect = valIn * dolInNum;
       valTax = valDirect * taxes;
       valOut = (valTax + valDirect);
       valOut = valOut.toFixed(2);
-      console.log("[dolar-turismo-service.ts] Imposto pago: "+ valTax)
+      console.log("[dolar-turismo-service.ts] Imposto pago: "+ valTax.toFixed(2))
+      //<small>Valor do imposto pago: R$ {{ taxas }}</small>
+      let vTax: HTMLElement = document.getElementById('valImposto')
+      vTax.innerHTML = "<small>Valor do imposto pago: R$ "+ valTax.toFixed(2) +"</small>"
       console.log("[dolar-turismo-service.ts] Conversão com taxa ("+ txtPay +"): "+ valOut)
       return valOut;
+    }
+
+    getFieldVals(fieldId:string): number {
+     var num: number
+
+
+       return num
     }
 
 }

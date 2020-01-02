@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Converte
+      Converte 2 (BETA)
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -34,19 +34,20 @@
           <ion-card-title>Converter para Real</ion-card-title>
           <ion-card-subtitle>Digite o Valor em Dolar</ion-card-subtitle>
         </ion-card-header>
+
         <ion-item>
           <ion-label>Forma de pagamento</ion-label>
-          <ion-select id="types" interface="action-sheet" placeholder="Selecione" (ionChange)="onChange($event)">
-            <ion-select-option value="1" selected="selected">Dinheiro</ion-select-option>
-            <ion-select-option value="2" >Cartão</ion-select-option>
-            <ion-select-option value="3" >Entrega no Brasil</ion-select-option>
+          <ion-select [(ngModel)]="trType" name="trType" id="trType" multiple="false" interface="action-sheet" placeholder="Selecione" (ionChange)="onChange()">
+            <ion-select-option [value]="item" *ngFor="let item of tipos">{{item.nome}}</ion-select-option>
           </ion-select>
         </ion-item>
-        <ion-input class="box" type="number" id="valUs" size=40 style="text-align: left; font-size: 40px;">1.00</ion-input>
-        <ion-input class="box" readonly id="valBr" size=40 style="text-align: left; font-size: 40px; ">{{ ask }}</ion-input>
-        <ion-label id="valImposto"><small>Valor do imposto pago: </small></ion-label>
+
+        <ion-input class="box" [(ngModel)]="valUs" type="number" id="valUs" size=40 style="text-align: left; font-size: 40px;"></ion-input>
+        <ion-input class="box" [(ngModel)]="valBr" readonly id="valBr" size=40 style="text-align: left; font-size: 40px; "></ion-input>
+        <ion-label id="valImposto"><small>Valor do imposto pago: R$ {{ taxas }}</small></ion-label>
+
       </ion-card>
       <div class="ion-padding">
-        <ion-button expand="block" color="success" type="submit" class="ion-no-margin" >Converte</ion-button>
+        <ion-button expand="block" color="success" type="submit" class="ion-no-margin" (click)="onChange()" >Converte</ion-button>
       </div>
 </ion-content>
