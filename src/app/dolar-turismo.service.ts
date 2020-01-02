@@ -54,7 +54,7 @@ export class DolarTurismoService {
       }
       
       console.log('[dolar-turismo-service.ts] Transação selecionada: '+txtPay); 
-      //default = dinheiro (1)
+      //default = dinheiro
 
       valDirect = valIn * dolInNum;
       valTax = valDirect * taxes;

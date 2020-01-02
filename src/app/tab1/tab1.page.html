@@ -42,12 +42,15 @@
           </ion-select>
         </ion-item>
 
-        <ion-input class="box" [(ngModel)]="valUs" type="number" id="valUs" size=40 style="text-align: left; font-size: 40px;" (ionChange)="onChange()"></ion-input>
-        <ion-input class="box" [(ngModel)]="valBr" readonly id="valBr" size=40 style="text-align: left; font-size: 40px; "></ion-input>
+        <ion-input class="box" [(ngModel)]="valUs" type="number" id="valUs" placeholder="USD" size=40 style="text-align: left; font-size: 40px;" (ionChange)="onChange()"></ion-input>
+        <ion-input class="box" [(ngModel)]="valBr" readonly id="valBr" placeholder ="REAIS" size=40 style="text-align: left; font-size: 40px; "></ion-input>
         <ion-label id="valImposto"><small>Valor do imposto pago: R$ {{ taxas }}</small></ion-label>
 
       </ion-card>
       <div class="ion-padding">
-        <ion-button expand="block" color="success" type="submit" class="ion-no-margin" (click)="onChange()" >Converte</ion-button>
+        <ion-button expand="block" color="success" type="submit" class="ion-no-margin" (click)="converte()" >Converte</ion-button>
       </div>
+     <div class="txt">© georgearaujo.com.br</div>
+       
+   
 </ion-content>
