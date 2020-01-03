@@ -15,7 +15,7 @@ export class DolarTurismoService {
     getRemoteData(){
       //mudar para http://economia.awesomeapi.com.br/USD-BRLT/1?format=json quando for buscar o valor remoto.
       //fazer seleção automática, atualização do json e identificação de online e offline
-      return this.http.get('http://economia.awesomeapi.com.br/USD-BRLT/1?format=json');
+      return this.http.get('https://economia.awesomeapi.com.br/USD-BRLT/1?format=json');
       //return this.http.get('assets/data/dolar.json'); //Local
     };
 
