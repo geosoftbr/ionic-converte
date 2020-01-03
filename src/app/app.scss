@@ -51,15 +51,14 @@
       padding: 16px!important;
       //box-shadow: offset-x 2px 2px 2px 1px lightsalmon;
       outline-offset: 0.5rem;
-    
-
     }
 
     ion-alert {
       --background        : #2c3e50 !important;
       --ion-text-color    : white !important;
       --ion-color-step-550: white !important;
-  }
+    }
+
     .action-sheet-group{
       --background        : #2c3e50 !important;
       --ion-text-color    : white !important;
@@ -71,6 +70,23 @@
       text-align: center;
       color: var(--ion-color-step-600,#666);
       text-transform: uppercase;
+    }
+
+    .txt-box{
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      color: var(--ion-color-step-600,#666);
+      display: block;
+      position: relative;
+      text-transform: uppercase;
+      
+    }
+    a:hover {
+      color: #666;
+    }
+    a{
+      text-decoration: none;
     }
 
     .tabbar {

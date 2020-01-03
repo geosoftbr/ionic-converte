@@ -9,4 +9,8 @@ export class Tab3Page {
 
   constructor() {}
 
+  abrepesquisa(){
+    window.open("https://forms.gle/yfY4kFpicVHFo5ACA","_blank")
+  }
+  
 }

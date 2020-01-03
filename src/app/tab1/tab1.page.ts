@@ -160,6 +160,11 @@ txMoney = 0.011; // 1,1%
     );
     
   }
+
+  abrepesquisa(){
+    window.open("https://forms.gle/yfY4kFpicVHFo5ACA","_blank")
+  }
+
   converte(){
     console.log("Entrando na função Converte")
     var txt: any

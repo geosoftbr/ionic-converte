@@ -1,8 +1,11 @@
-<ion-header>
+<ion-header translucent>
   <ion-toolbar>
     <ion-title>
       Converte 2 (BETA)
     </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="abrepesquisa()"><ion-icon slot="icon-only" name="star"></ion-icon></ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -43,13 +46,14 @@
         </ion-item>
 
         <ion-input class="box" [(ngModel)]="valUs" type="number" id="valUs" placeholder="USD" size=40 style="text-align: left; font-size: 40px;" (ionChange)="onChange()"></ion-input>
-        <ion-input class="box"  readonly id="valBr" placeholder ="REAIS" size=40 style="text-align: left; font-size: 40px; "></ion-input>
+        <ion-input class="box" readonly id="valBr" placeholder ="REAIS" size=40 style="text-align: left; font-size: 40px; "></ion-input>
         <ion-label id="valImposto"><small>Valor do imposto pago: R$ {{ taxas }}</small></ion-label>
 
       </ion-card>
       <div class="ion-padding">
-        <ion-button expand="block" color="success" type="submit" class="ion-no-margin" (click)="converte()" >Converte</ion-button>
+        <ion-button expand="block" color="primary" type="submit" class="ion-no-margin" (click)="converte()" >Converte</ion-button>
       </div>
+     <div class="ion-padding"><p><a class="txt-box" href="https://forms.gle/yfY4kFpicVHFo5ACA" target="_blank">O que está achando da versão BETA? Deixe seu feedback</a></p></div>
      <div class="txt">© georgearaujo.com.br</div>
        
    
