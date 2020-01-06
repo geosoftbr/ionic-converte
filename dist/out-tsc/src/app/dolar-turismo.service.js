@@ -9,7 +9,7 @@ var DolarTurismoService = /** @class */ (function () {
     DolarTurismoService.prototype.getRemoteData = function () {
         //mudar para http://economia.awesomeapi.com.br/USD-BRLT/1?format=json quando for buscar o valor remoto.
         //fazer seleção automática, atualização do json e identificação de online e offline
-        return this.http.get('http://economia.awesomeapi.com.br/USD-BRLT/1?format=json');
+        return this.http.get('https://economia.awesomeapi.com.br/USD-BRLT/1?format=json');
         //return this.http.get('assets/data/dolar.json'); //Local
     };
     ;
@@ -28,28 +28,40 @@ var DolarTurismoService = /** @class */ (function () {
         var valTax;
         valTaxMoney = 0.011; // 1,1%
         valTaxCredit = 0.0638; // 6,38%
-        valTaxDelivery = 0.6; // 60%
+        valTaxDelivery = 0.6; // até 60%
         dolInNum = parseFloat(dolIn);
-        if (transType == "1") {
+        if (transType == "Dinheiro") {
             taxes = valTaxMoney;
             txtPay = "Dinheiro";
         }
-        else if (transType == "2") {
+        else if (transType == "Cartão") {
             taxes = valTaxCredit;
             txtPay = "Cartão de Crédito";
         }
-        else if (transType == "3") {
+        else if (transType == "Entrega no Brasil") {
             taxes = valTaxDelivery;
             txtPay = "Entrega";
         }
+        else if (transType == null) { //default = dinheiro
+            taxes = valTaxMoney;
+            txtPay = "Dinheiro";
+        }
         console.log('[dolar-turismo-service.ts] Transação selecionada: ' + txtPay);
+        //default = dinheiro
         valDirect = valIn * dolInNum;
         valTax = valDirect * taxes;
         valOut = (valTax + valDirect);
         valOut = valOut.toFixed(2);
-        console.log("[dolar-turismo-service.ts] Imposto pago: " + valTax);
+        console.log("[dolar-turismo-service.ts] Imposto pago: " + valTax.toFixed(2));
+        //<small>Valor do imposto pago: R$ {{ taxas }}</small>
+        var vTax = document.getElementById('valImposto');
+        vTax.innerHTML = "<small>Valor do imposto pago: R$ " + valTax.toFixed(2) + "</small>";
         console.log("[dolar-turismo-service.ts] Conversão com taxa (" + txtPay + "): " + valOut);
         return valOut;
+    };
+    DolarTurismoService.prototype.getFieldVals = function (fieldId) {
+        var num;
+        return num;
     };
     DolarTurismoService = tslib_1.__decorate([
         Injectable({

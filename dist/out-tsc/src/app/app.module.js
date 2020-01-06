@@ -9,6 +9,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DolarTurismoService } from './dolar-turismo.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -16,7 +18,7 @@ var AppModule = /** @class */ (function () {
         NgModule({
             declarations: [AppComponent],
             entryComponents: [],
-            imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+            imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
             providers: [
                 StatusBar,
                 SplashScreen,

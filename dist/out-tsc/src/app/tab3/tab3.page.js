@@ -3,6 +3,9 @@ import { Component } from '@angular/core';
 var Tab3Page = /** @class */ (function () {
     function Tab3Page() {
     }
+    Tab3Page.prototype.abrepesquisa = function () {
+        window.open("https://forms.gle/yfY4kFpicVHFo5ACA", "_blank");
+    };
     Tab3Page = tslib_1.__decorate([
         Component({
             selector: 'app-tab3',
