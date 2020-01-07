@@ -11,6 +11,13 @@
 
 <ion-content >
 
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content 
+    pullingText="Arraste e solte para atualizar a cotação"
+    refreshingText="Atualizando cotação...">
+  </ion-refresher-content>
+  </ion-refresher>
+
 <!--
     <ion-card >
       <ion-card-header>

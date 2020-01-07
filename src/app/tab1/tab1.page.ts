@@ -25,6 +25,8 @@ subErr: string;
 
 public trType:any;
 public valUs:any;
+public refresher;
+public isRefreshing: boolean = false;
 
 tipos = [
   { nome: 'Dinheiro' },
@@ -49,25 +51,22 @@ txMoney = 0.011; // 1,1%
     await alert.present();
   }
 
+  doRefresh(refresher) {
+    console.log('Atualizando Dolar Turismo');
+    this.refresher = refresher;
+    this.isRefreshing = true;
+    this.getDolarTurismo();
+  }
+
   ngOnInit() {
+    this.getDolarTurismo();
+
+  }
+
+  getDolarTurismo(){
     this.dolarTurismo.getRemoteData().subscribe(
       data=>{
         this.parseJson(data);
-
-        //let vDol: HTMLElement = document.getElementById('valUs');
-        //let vBR: HTMLElement = document.getElementById('valBr');
-
-        //console.log("[tab1.page.ts - ngOnInit] - Default > Dinheiro");
-        //console.log("[tab1.page.ts - ngOnInit] - valor campo dolar: "+ vDol.innerHTML);
-        //this.valDol = vDol.innerHTML;
-
-        //console.log("[tab1.page.ts - ngOnInit] - Iniciando Conversão")
-        //this.tipoTran = "Dinheiro"; //default => Dinheiro
-        //this.firstVal = this.valDol * this.ask;
-        //this.taxas = (this.firstVal * this.txMoney).toFixed(2);
-
-        //console.log("[tab1.page.ts - ngOnInit] - Tipo da Transação "+ this.tipoTran)
-        //console.log("[tab1.page.ts - ngOnInit] - Valor de Entrada "+ this.valDol)
 
         if(this.ask==null){
           this.subErr = 'Erro de Conexão'
@@ -77,17 +76,20 @@ txMoney = 0.011; // 1,1%
         } else{
           console.log ("[tab1.page.ts - ngOnInit] - Pronto para converter por "+ this.ask)
         }
-        
-        //this.valEntrada = parseFloat(this.valDol);
-        //this.newVal = this.dolarTurismo.convertValue(this.tipoTran,this.valDol, this.ask);
-        //vBR.innerHTML = this.newVal;
-    
+        if (this.isRefreshing){
+          this.refresher.target.complete();
+          this.isRefreshing = false;
+        }
       }, error =>{
         console.log(error);
+
+        if (this.isRefreshing){
+          this.refresher.target.complete();
+          this.isRefreshing = false;
+        }
         
       }
     );
-
   }
   
   parseJson(data: Object) {
@@ -107,9 +109,6 @@ txMoney = 0.011; // 1,1%
           this.color = "success";
         }
 
-       //console.log('[tab1.page.ts - parseJson] Cor Selecionada => '+ this.color);
-       //console.log('[tab1.page.ts - parseJson] Ultima atualização '+ this.create_date);
-       //console.log('[tab1.page.ts - parseJson] Cotação - ' + this.ask);
       }
 
   }
@@ -117,7 +116,6 @@ txMoney = 0.011; // 1,1%
     var txt: any
 
     if(this.trType==null){
-      txt = ""
       this.subErr = 'Selecione a Forma de Pagamento!'
       this.errMsg = 'Não consigo fazer nada se você não selecionar a forma de pagamento!'
       this.presentAlert()
@@ -129,36 +127,23 @@ txMoney = 0.011; // 1,1%
     let vBR: HTMLElement = document.getElementById('valBr');
 
     //console.log("[tab1.page.ts - onChange] - yada valUs => "+ this.valUs);
-    this.dolarTurismo.getRemoteData().subscribe(
-      data=>{
-        this.parseJson(data);
-        
-        this.tipoTran = txt.nome;
 
-        //pega valor digitado em Dolar
-        //let vDol: HTMLElement = document.getElementById('valUs');
-        if(this.valUs==null){
-          this.valDol = 0;
-        }else{
-          this.valDol = this.valUs;
-        }
+    this.getDolarTurismo();
 
-        //console.log("[tab1.page.ts - onChange] - Iniciando Conversão")
-        //console.log("[tab1.page.ts - onChange] - Tipo da Transação "+ this.tipoTran)
-        
-        //console.log("[tab1.page.ts - onChange] - Valor de Entrada "+ this.valDol)
-        //console.log ("[tab1.page.ts - onChange] - Preparando para converter por "+ this.ask)
+    this.tipoTran = txt.nome;
 
-        this.valEntrada = parseFloat(this.valDol);
-        this.newVal = this.dolarTurismo.convertValue(this.tipoTran,this.valEntrada, this.ask );
-        vBR.innerHTML = this.newVal;
+    //pega valor digitado em Dolar
+    //let vDol: HTMLElement = document.getElementById('valUs');
+    if(this.valUs==null){
+      this.valDol = 0;
+    }else{
+      this.valDol = this.valUs;
+    }
 
-      }, error =>{
-        console.log(error);
-
-      }
-    );
-    
+    this.valEntrada = parseFloat(this.valDol);
+    this.newVal = this.dolarTurismo.convertValue(this.tipoTran,this.valEntrada, this.ask );
+    vBR.innerHTML = this.newVal;
+      
   }
 
   abrepesquisa(){
@@ -170,7 +155,6 @@ txMoney = 0.011; // 1,1%
     var txt: any
 
     if(this.trType==null){
-      txt = ""
       this.subErr = 'Selecione a Forma de Pagamento!'
       this.errMsg = 'Não consigo fazer nada se você não selecionar a forma de pagamento!'
       this.presentAlert()
@@ -178,42 +162,26 @@ txMoney = 0.011; // 1,1%
       txt = this.trType;
     }
     
-
     let vBR: HTMLElement = document.getElementById('valBr');
 
+    this.getDolarTurismo();
+
+    this.tipoTran = txt.nome;
+
     //console.log("[tab1.page.ts - onChange] - yada valUs => "+ this.valUs);
-    this.dolarTurismo.getRemoteData().subscribe(
-      data=>{
-        this.parseJson(data);
-        
-        this.tipoTran = txt.nome;
+  
+    if(this.valUs==null){
+      this.valDol = 0;
+      this.subErr = 'Digite o valor em Dolar...'
+      this.errMsg = '...senão eu não posso converter!'
+      this.presentAlert()
+    }else{
+      this.valDol = this.valUs;
+    }
 
-        //pega valor digitado em Dolar
-        //let vDol: HTMLElement = document.getElementById('valUs');
-        if(this.valUs==null){
-          this.valDol = 0;
-          this.subErr = 'Digite o valor em Dolar...'
-          this.errMsg = '...senão eu não posso converter!'
-          this.presentAlert()
-        }else{
-          this.valDol = this.valUs;
-        }
-
-        //console.log("[tab1.page.ts - onChange] - Iniciando Conversão")
-        //console.log("[tab1.page.ts - onChange] - Tipo da Transação "+ this.tipoTran)
-        
-        //console.log("[tab1.page.ts - onChange] - Valor de Entrada "+ this.valDol)
-        //console.log ("[tab1.page.ts - onChange] - Preparando para converter por "+ this.ask)
-
-        this.valEntrada = parseFloat(this.valDol);
-        this.newVal = this.dolarTurismo.convertValue(this.tipoTran,this.valEntrada, this.ask );
-        vBR.innerHTML = this.newVal;
-
-      }, error =>{
-        console.log(error);
-
-      }
-    );
+    this.valEntrada = parseFloat(this.valDol);
+    this.newVal = this.dolarTurismo.convertValue(this.tipoTran,this.valEntrada, this.ask );
+    vBR.innerHTML = this.newVal;
     
   }
 }
