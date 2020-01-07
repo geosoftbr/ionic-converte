@@ -105,8 +105,11 @@ txMoney = 0.011; // 1,1%
         if (d > 0){
           this.color = "danger"
         } 
-        else{
+        else if(d < 0) {
           this.color = "success";
+        }
+        else {
+          this.color = "primary";
         }
 
       }
