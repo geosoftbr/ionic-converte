@@ -69,8 +69,31 @@
       font-weight: 700;
       text-align: center;
       color: var(--ion-color-step-600,#666);
+      padding-top: 5px;
       text-transform: uppercase;
     }
+    .padding-txt{
+      --padding-start: var(--ion-padding, 5px);
+      --padding-end: var(--ion-padding, 5px);
+      --padding-top: var(--ion-padding, 5px);
+      --padding-bottom: var(--ion-padding, 5px);
+      padding-left: var(--ion-padding, 5px);
+      padding-right: var(--ion-padding, 5px);
+      padding-top: var(--ion-padding, 5px);
+      padding-bottom: var(--ion-padding, 2px);
+      
+      display: block;
+      -webkit-margin-before: 1em;
+      margin-block-start: 0em;
+      -webkit-margin-after: 0em;
+      margin-block-end: -1em;
+      -webkit-margin-start: 0px;
+      margin-inline-start: 0px;
+      -webkit-margin-end: 0px;
+      margin-inline-end: 0px;
+  }
+  
+  
 
     .txt-box{
       font-size: 12px;

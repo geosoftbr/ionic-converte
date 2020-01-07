@@ -74,7 +74,9 @@ txMoney = 0.011; // 1,1%
           this.presentAlert()
           console.log("[tab1.page.ts - ngOnInit] - Erro na consulta do dólar turismo")
         } else{
+          console.log("[tab1.page.ts - ngOnInit] - Cotação atualizada em: "+ this.create_date)
           console.log ("[tab1.page.ts - ngOnInit] - Pronto para converter por "+ this.ask)
+          
         }
         if (this.isRefreshing){
           this.refresher.target.complete();

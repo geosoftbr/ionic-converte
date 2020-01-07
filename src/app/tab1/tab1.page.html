@@ -11,8 +11,8 @@
 
 <ion-content >
 
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content 
+  <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" snapback-duration="1000ms" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
     pullingText="Arraste e solte para atualizar a cotação"
     refreshingText="Atualizando cotação...">
   </ion-refresher-content>
@@ -60,7 +60,7 @@
       <div class="ion-padding">
         <ion-button expand="block" color="primary" type="submit" class="ion-no-margin" (click)="converte()" >Converte</ion-button>
       </div>
-     <div class="ion-padding"><p><a class="txt-box" href="https://forms.gle/yfY4kFpicVHFo5ACA" target="_blank">O que está achando da versão BETA? Deixe seu feedback</a></p></div>
+     <div class="padding-txt"><p><a class="txt-box" href="https://forms.gle/yfY4kFpicVHFo5ACA" target="_blank">O que está achando da versão BETA? Deixe seu feedback</a></p></div>
      <div class="txt">© georgearaujo.com.br</div>
        
    
