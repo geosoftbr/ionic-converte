@@ -63,7 +63,7 @@ txMoney = 0.011; // 1,1%
 
   }
 
-  getDolarTurismo(){
+  getDolarTurismo(){ //criada para ser reutilizada internamente.
     this.dolarTurismo.getRemoteData().subscribe(
       data=>{
         this.parseJson(data);
