@@ -64,6 +64,11 @@ txMoney = 0.011; // 1,1%
   }
 
   getDolarTurismo(){ //criada para ser reutilizada internamente.
+    console.log("[tab1.page.ts - ngOnInit] - Limpando campo ASK")
+    this.ask = 0;
+    console.log("[tab1.page.ts - ngOnInit] - Limpando campo created_date")
+    this.create_date = "";
+
     this.dolarTurismo.getRemoteData().subscribe(
       data=>{
         this.parseJson(data);
