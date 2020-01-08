@@ -174,7 +174,7 @@ txMoney = 0.011; // 1,1%
     
     let vBR: HTMLElement = document.getElementById('valBr');
 
-    this.getDolarTurismo();
+    //this.getDolarTurismo();
 
     this.tipoTran = txt.nome;
 
