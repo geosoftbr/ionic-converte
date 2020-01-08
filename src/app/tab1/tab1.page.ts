@@ -138,7 +138,7 @@ txMoney = 0.011; // 1,1%
 
     //console.log("[tab1.page.ts - onChange] - yada valUs => "+ this.valUs);
 
-    this.getDolarTurismo();
+    //this.getDolarTurismo(); 
 
     this.tipoTran = txt.nome;
 
